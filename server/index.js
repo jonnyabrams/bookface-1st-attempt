@@ -10,6 +10,11 @@ mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopol
   console.log("Connected to database")
 })
 
+// middleware
+app.use(express.json())
+app.use(helmet())
+app.use(morgan("dev")) // was getting deprecation warning due to import syntax, adding "dev" stops this
+
 app.listen(8000, () => {
   console.log("Server is running")
 })
