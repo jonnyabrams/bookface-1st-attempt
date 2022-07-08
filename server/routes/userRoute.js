@@ -1,16 +1,9 @@
 import express from 'express'
-import { updateUser } from '../controllers/userController.js'
+import { deleteUser, updateUser } from '../controllers/userController.js'
 
 const router = express.Router()
 
 router.put('/:id', updateUser)
-
-// delete user 
-
-// get a user
-
-// follow user
-
-// unfollow user
+router.delete('/:id', deleteUser)
 
 export default router

@@ -2,7 +2,7 @@ import User from '../models/UserModel.js'
 import bcrypt from 'bcrypt'
 
 export const updateUser = async (req, res) => {
-  if (req.body.userId === req.params.id || req.user.isAdmin) {
+  if (req.body.userId === req.params.id || req.body.isAdmin) {
     // if user tries to update password, generate a new one
     if (req.body.password) {
       try {
@@ -23,5 +23,18 @@ export const updateUser = async (req, res) => {
     }
   } else {
     res.status(403).json("You can only update your own account")
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  if (req.body.userId === req.params.id || req.body.isAdmin) {
+    try {
+      const user = await User.findByIdAndDelete(req.params.id)
+      res.status(200).json('Account deleted')
+    } catch (error) {
+      res.status(500).json(error)
+    }
+  } else {
+    res.status(403).json("You can only delete your own account")
   }
 }
