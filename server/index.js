@@ -5,6 +5,7 @@ import morgan from 'morgan'
 import 'dotenv/config'
 import userRoute from './routes/userRoute.js'
 import authRoute from './routes/authRoute.js'
+import postRoute from './routes/postRoute.js'
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(morgan("common"))
 
 app.use('/user', userRoute)
 app.use('/auth', authRoute)
+app.use('/post', postRoute)
 
 app.listen(8000, () => {
   console.log("Server is running")
