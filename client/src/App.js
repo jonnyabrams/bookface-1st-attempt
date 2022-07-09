@@ -1,10 +1,9 @@
+import Home from "./pages/home/Home"
 
 const App = () => {
   return (
-    <div>
-      Oi oi
-    </div>
-  );
+    <Home />
+  )
 }
 
 export default App
