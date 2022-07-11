@@ -1,3 +1,3 @@
 # Bookface
 
-Finish frontend setup
+A Facebook clone using the MERN stack.
