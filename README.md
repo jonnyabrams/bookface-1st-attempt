@@ -1,2 +1,3 @@
 # Bookface
 
+Finish frontend setup
