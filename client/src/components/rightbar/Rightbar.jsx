@@ -1,4 +1,6 @@
 import './rightbar.css'
+import { Users } from "../../dummyData"
+import Online from '../online/Online'
 
 const Rightbar = () => {
   return (
@@ -12,27 +14,9 @@ const Rightbar = () => {
       <img src="assets/ad.jpeg" alt="" className="rightbar-ad" />
       <h4 className="rightbar-title">Online friends</h4>
       <ul className="rightbar-friend-list">
-        <li className="rightbar-friend">
-          <div className="rightbar-profile-image-container">
-            <img src="assets/profile/2.jpeg" alt="" className="rightbar-profile-image" />
-            <span className="rightbar-online"></span>
-          </div>
-          <span className="rightbar-username">Jeromy Gride</span>
-        </li>
-        <li className="rightbar-friend">
-          <div className="rightbar-profile-image-container">
-            <img src="assets/profile/2.jpeg" alt="" className="rightbar-profile-image" />
-            <span className="rightbar-online"></span>
-          </div>
-          <span className="rightbar-username">Jeromy Gride</span>
-        </li>
-        <li className="rightbar-friend">
-          <div className="rightbar-profile-image-container">
-            <img src="assets/profile/2.jpeg" alt="" className="rightbar-profile-image" />
-            <span className="rightbar-online"></span>
-          </div>
-          <span className="rightbar-username">Jeromy Gride</span>
-        </li>
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
       </ul>
     </div>
   )
