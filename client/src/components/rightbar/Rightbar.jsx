@@ -17,6 +17,21 @@ const Rightbar = () => {
         {Users.map((u) =>(
           <Online key={u.id} user={u} />
         ))}
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
+        {Users.map((u) =>(
+          <Online key={u.id} user={u} />
+        ))}
       </ul>
     </div>
   )
