@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Post = ({ post }) => {
-  const [likes, setLikes] = useState(post.likes)
+  const [likes, setLikes] = useState(post.likes.length)
   const [isLiked, setIsLiked] = useState(false)
   const [user, setUser] = useState({})
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
