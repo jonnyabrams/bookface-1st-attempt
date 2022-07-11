@@ -27,7 +27,7 @@ const Post = ({ post }) => {
       <div className="post-wrapper">
         <div className="post-top">
           <div className="post-top-left">
-            <img className='post-profile-image' src={user.profilePicture} alt="" />
+            <img className='post-profile-image' src={user.profilePicture || PF + 'default-profile.png'} alt="" />
             <span className="post-username">{user.username}</span>
             <span className="post-date">{post.date}</span>
           </div>
