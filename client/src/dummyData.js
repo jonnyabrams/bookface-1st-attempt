@@ -46,7 +46,6 @@ export const Posts = [
   },
   {
     id: 4,
-    content: "Yo",
     img: "assets/stock/4.jpeg",
     date: "20 mins ago",
     userId: 1,
