@@ -25,6 +25,8 @@ const Rightbar = ({ profile }) => {
   }
 
   const ProfileRightbar = () => {
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER
+    
     return(
       <>
       <h4 className='rightbar-title'>User information</h4>
@@ -45,27 +47,27 @@ const Rightbar = ({ profile }) => {
       <h4 className='rightbar-title'>User friends</h4>
       <div className="rightbar-followings">
         <div className="rightbar-following">
-          <img src="assets/profile/1.webp" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/1.webp`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
         <div className="rightbar-following">
-          <img src="assets/profile/2.jpeg" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/2.jpeg`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
         <div className="rightbar-following">
-          <img src="assets/profile/3.webp" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/3.webp`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
         <div className="rightbar-following">
-          <img src="assets/profile/1.webp" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/1.webp`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
         <div className="rightbar-following">
-          <img src="assets/profile/2.jpeg" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/2.jpeg`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
         <div className="rightbar-following">
-          <img src="assets/profile/3.webp" alt="" className="rightbar-following-image" />
+          <img src={`${PF}profile/3.webp`} alt="" className="rightbar-following-image" />
           <span className="rightbar-following-name">Rey McSriff</span>
         </div>
       </div>
