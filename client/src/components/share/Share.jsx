@@ -4,15 +4,33 @@ import LabelIcon from '@mui/icons-material/Label'
 import RoomIcon from '@mui/icons-material/Room'
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 // import CancelIcon from '@mui/icons-material/Cancel'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { useRef } from 'react'
+import axios from 'axios'
 
 const Share = () => {
   const { user } = useContext(AuthContext)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
+  const description = useRef()
+  const [file, setFile] = useState(null)
 
   const capitalise = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  const submitHandler = async (e) => {
+    e.preventDefault()
+    const newPost = {
+      userId: user._id,
+      description: description.current.value
+    }
+
+    try {
+      await axios.post('/post', newPost)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -20,15 +38,16 @@ const Share = () => {
       <div className="share-wrapper">
         <div className="share-top">
           <img className='share-profile-image' src={user.profilePicture ? PF + user.profilePicture : PF + 'default-profile.png'} alt="" />
-          <input placeholder={`What's on your mind, ${capitalise(user.username)}?`} className='share-input' />
+          <input placeholder={`What's on your mind, ${capitalise(user.username)}?`} className='share-input' ref={description} />
         </div>
         <hr className='share-hr' />
-        <div className="share-bottom">
+        <form className="share-bottom" onSubmit={submitHandler}>
           <div className="share-options">
-            <div className="share-option">
+            <label htmlFor='file' className="share-option">
               <PermMediaIcon htmlColor='tomato' className='share-icon' />
               <span className='share-option-text'>Photo or Video</span>
-            </div>
+              <input style={{ display: 'none' }} type='file' id='file' accept='.png,.jpeg,.jpg' onChange={(e) => setFile(e.target.files[0])} />
+            </label>
             <div className="share-option">
               <LabelIcon htmlColor='blue' className='share-icon' />
               <span className='share-option-text'>Tag</span>
@@ -42,10 +61,8 @@ const Share = () => {
               <span className='share-option-text'>Feelings</span>
             </div>
           </div>
-          <button className="share-button">
-            Share
-          </button>
-        </div>
+          <button className="share-button" type="submit">Share</button>
+        </form>
       </div>
     </div>
   )
