@@ -4,14 +4,23 @@ import LabelIcon from '@mui/icons-material/Label'
 import RoomIcon from '@mui/icons-material/Room'
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
 // import CancelIcon from '@mui/icons-material/Cancel'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
 
 const Share = () => {
+  const { user } = useContext(AuthContext)
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+  const capitalise = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <div className="share">
       <div className="share-wrapper">
         <div className="share-top">
-          <img className='share-profile-image' src="/assets/profile/1.webp" alt="" />
-          <input placeholder='Say something...' className='share-input' />
+          <img className='share-profile-image' src={user.profilePicture ? PF + user.profilePicture : PF + 'default-profile.png'} alt="" />
+          <input placeholder={`What's on your mind, ${capitalise(user.username)}?`} className='share-input' />
         </div>
         <hr className='share-hr' />
         <div className="share-bottom">
