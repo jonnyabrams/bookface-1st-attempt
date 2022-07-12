@@ -23,11 +23,25 @@ const Share = () => {
     e.preventDefault()
     const newPost = {
       userId: user._id,
-      description: description.current.value
+      content: description.current.value
+    }
+
+    if (file) {
+      const data = new FormData()
+      const fileName = Date.now() + file.name
+      data.append('name', fileName)
+      data.append('file', file)
+      newPost.img = fileName
+      try {
+        await axios.post('/upload', data)
+      } catch (error) {
+        console.log(error)
+      }
     }
 
     try {
       await axios.post('/post', newPost)
+      window.location.reload()
     } catch (error) {
       console.log(error)
     }
