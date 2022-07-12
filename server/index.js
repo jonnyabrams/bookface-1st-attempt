@@ -3,6 +3,8 @@ import mongoose from 'mongoose'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import multer from 'multer'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import 'dotenv/config'
 import userRoute from './routes/userRoute.js'
 import authRoute from './routes/authRoute.js'
@@ -13,6 +15,11 @@ const app = express()
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
   console.log("Connected to database")
 })
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+app.use('/images', express.static(path.join(__dirname, 'public/images')))
 
 // middleware
 app.use(express.json())
