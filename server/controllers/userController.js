@@ -40,8 +40,14 @@ export const deleteUser = async (req, res) => {
 }
 
 export const getUser = async (req, res) => {
+  const userId = req.query.userId
+  const username = req.query.username
+
   try {
-    const user = await User.findById(req.params.id)
+    // find by either id or username
+    const user = userId
+      ? await User.findById(userId)
+      : await User.findOne({ username: username })
     const { password, updatedAt, ...others } = user._doc
     res.status(200).json(others)
   } catch (error) {
