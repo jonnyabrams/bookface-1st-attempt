@@ -1,12 +1,15 @@
 import './rightbar.css'
 import { Users } from "../../dummyData"
 import Online from '../online/Online'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { AuthContext } from '../../context/AuthContext'
+import AddIcon from '@mui/icons-material/Add'
 
 const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([])
+  const { user: currentUser } = useContext(AuthContext)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
@@ -45,32 +48,37 @@ const Rightbar = ({ user }) => {
     
     return(
       <>
-      <h4 className='rightbar-title'>User information</h4>
-      <div className="rightbar-info">
-        <div className="rightbar-info-item">
-          <span className="rightbar-info-key">City:</span>
-          <span className="rightbar-info-value">{user.city}</span>
+        { user.username !== currentUser.username && (
+            <button className="rightbar-follow-button">
+              Follow: <AddIcon />
+            </button>
+        )}
+        <h4 className='rightbar-title'>User information</h4>
+        <div className="rightbar-info">
+          <div className="rightbar-info-item">
+            <span className="rightbar-info-key">City:</span>
+            <span className="rightbar-info-value">{user.city}</span>
+          </div>
+          <div className="rightbar-info-item">
+            <span className="rightbar-info-key">From:</span>
+            <span className="rightbar-info-value">{user.from}</span>
+          </div>
+          <div className="rightbar-info-item">
+            <span className="rightbar-info-key">Relationship:</span>
+            <span className="rightbar-info-value">{user.relationship}</span>
+          </div>
         </div>
-        <div className="rightbar-info-item">
-          <span className="rightbar-info-key">From:</span>
-          <span className="rightbar-info-value">{user.from}</span>
+        <h4 className='rightbar-title'>User friends</h4>
+        <div className="rightbar-followings">
+          {friends.map((friend) => (
+            <Link to={`/profile/${friend.username}`} style={{ textDecoration: 'none' }}>
+              <div className="rightbar-following">
+                <img src={friend.profilePicture ? PF + friend.profilePicture : PF + 'default-profile.png'} alt="" className="rightbar-following-image" />
+                <span className="rightbar-following-name">{friend.username}</span>
+              </div>
+            </Link>
+          ))}
         </div>
-        <div className="rightbar-info-item">
-          <span className="rightbar-info-key">Relationship:</span>
-          <span className="rightbar-info-value">{user.relationship}</span>
-        </div>
-      </div>
-      <h4 className='rightbar-title'>User friends</h4>
-      <div className="rightbar-followings">
-        {friends.map((friend) => (
-          <Link to={`/profile/${friend.username}`} style={{ textDecoration: 'none' }}>
-            <div className="rightbar-following">
-              <img src={friend.profilePicture ? PF + friend.profilePicture : PF + 'default-profile.png'} alt="" className="rightbar-following-image" />
-              <span className="rightbar-following-name">{friend.username}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
       </>
     )
   }
