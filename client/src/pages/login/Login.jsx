@@ -1,8 +1,8 @@
-import { useRef } from 'react'
+import { useRef, useContext } from 'react'
 import './login.css'
 import { loginCall } from '../../apiCalls'
-import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const Login = () => {
   const email = useRef()
@@ -42,9 +42,9 @@ const Login = () => {
               className="login-input" 
               ref={password} 
             />
-            <button className="login-button">Log in</button>
+            <button className="login-button">{ isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Log in' }</button>
             <span className="login-forgot">Forgot password?</span>
-            <button className="login-register-button">Create a new account</button>
+            <button className="login-register-button">{ isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Create a new account' }</button>
           </form>
         </div>
       </div>
