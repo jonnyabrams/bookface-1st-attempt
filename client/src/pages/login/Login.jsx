@@ -3,11 +3,13 @@ import './login.css'
 import { loginCall } from '../../apiCalls'
 import { AuthContext } from '../../context/AuthContext'
 import CircularProgress from '@mui/material/CircularProgress'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
   const email = useRef()
   const password = useRef()
   const { user, isFetching, error, dispatch } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -46,7 +48,7 @@ const Login = () => {
               { isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Log in' }
             </button>
             <span className="login-forgot">Forgot password?</span>
-            <button className="login-register-button">
+            <button onClick={() => navigate('/register')} className="login-register-button">
               { isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Create a new account' }
             </button>
           </form>
