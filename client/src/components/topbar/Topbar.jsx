@@ -34,8 +34,8 @@ const Topbar = () => {
       </div>
       <div className="topbar-right">
         <div className="topbar-links">
-          <span className="topbar-link">Homepage</span>
-          <span className="topbar-link">Timeline</span>
+          <span className="topbar-link" onClick={() => navigate('/')}>Homepage</span>
+          <span className="topbar-link" onClick={() => navigate(`/profile/${user.username}`)}>Timeline</span>
         </div>
         <div className="topbar-icons">
           <div className="topbar-icon-item">
