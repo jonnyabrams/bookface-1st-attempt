@@ -69,7 +69,7 @@ const Register = () => {
               ref={password2}
             />
             <button className="login-button" type="submit">Sign up</button>
-            <button className="login-register-button">Already have an account?</button>
+            <button onClick={() => navigate('/login')} className="login-register-button">Already have an account?</button>
           </form>
         </div>
       </div>
