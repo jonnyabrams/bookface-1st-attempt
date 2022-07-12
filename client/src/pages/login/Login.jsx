@@ -1,6 +1,11 @@
 import './login.css'
 
 const Login = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
+    console.log('clicked')
+  }
+
   return (
     <div className='login'>
       <div className="login-wrapper">
@@ -11,13 +16,13 @@ const Login = () => {
           </span>
         </div>
         <div className="login-right">
-          <div className="login-box">
+          <form className="login-box" onSubmit={handleClick}>
             <input type="email" placeholder="Email" className="login-input" />
             <input type="password" placeholder="Password" className="login-input" />
             <button className="login-button">Log in</button>
             <span className="login-forgot">Forgot password?</span>
             <button className="login-register-button">Create a new account</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
