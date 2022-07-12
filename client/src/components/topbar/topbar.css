@@ -21,6 +21,14 @@
   cursor: pointer;
 }
 
+.logout {
+  font-size: 12px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
 .topbar-center {
   flex: 5;
 }

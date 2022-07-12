@@ -3,19 +3,27 @@ import SearchIcon from '@mui/icons-material/Search'
 import PersonIcon from '@mui/icons-material/Person'
 import ChatIcon from '@mui/icons-material/Chat'
 import NotificationsIcon from '@mui/icons-material/Notifications'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 
 const Topbar = () => {
-  const { user } = useContext(AuthContext)
+  const { user, dispatch } = useContext(AuthContext)
+  const navigate = useNavigate()
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
+
+  const logout = async (e) => {
+    e.preventDefault()
+    dispatch({ type: "LOGOUT" })
+    navigate('/login')
+  };
 
   return (
     <div className="topbar-container">
       <div className="topbar-left">
         <Link to='/' style={{ textDecoration:"none" }}>
           <span className="logo">Bookface</span>
+          <span className="logout" onClick={logout}>Logout</span>
         </Link>
       </div>
       <div className="topbar-center">
