@@ -26,8 +26,8 @@ const Profile = () => {
         <div className="profile-right">
           <div className="profile-right-top">
             <div className="profile-cover">
-              <img className='profile-cover-image' src={`${PF}stock/6.jpeg`} alt="" />
-              <img className='profile-user-image' src={`${PF}profile/2.jpeg`} alt="" />
+              <img className='profile-cover-image' src={user.coverPicture || PF + 'default-cover.jpeg'} alt="" />
+              <img className='profile-user-image' src={user.profilePicture || PF + 'default-profile.png'} alt="" />
             </div>
             <div className="profile-info">
               <h4 className='profile-info-name'>{user.username}</h4>
@@ -36,7 +36,7 @@ const Profile = () => {
           </div>
           <div className="profile-right-bottom">
             <Feed username="jonny" />
-            <Rightbar profile />
+            <Rightbar user={user} />
           </div>
         </div>
       </div>
