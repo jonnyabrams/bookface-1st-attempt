@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
 import AddIcon from '@mui/icons-material/Add'
+import RemoveIcon from '@mui/icons-material/Remove'
 
 const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([])
   const { user: currentUser } = useContext(AuthContext)
+  const [followed, setFollowed] = useState(currentUser.following.includes(user?._id))
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
@@ -23,6 +25,19 @@ const Rightbar = ({ user }) => {
     }
     getFriends()
   }, [user])
+
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put('/user/' + user._id + '/unfollow', {userId: currentUser._id})
+      } else {
+        await axios.put('/user/' + user._id + '/follow', {userId: currentUser._id})
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    setFollowed(!followed)
+  }
 
   const HomeRightbar = () => {
     return(
@@ -44,13 +59,13 @@ const Rightbar = ({ user }) => {
     )
   }
 
-  const ProfileRightbar = () => {
-    
+  const ProfileRightbar = () => { 
     return(
       <>
         { user.username !== currentUser.username && (
-            <button className="rightbar-follow-button">
-              Follow: <AddIcon />
+            <button className="rightbar-follow-button" onClick={handleClick}>
+              { followed ? 'Unfollow' : 'Follow' }
+              { followed ? <RemoveIcon /> : <AddIcon /> }
             </button>
         )}
         <h4 className='rightbar-title'>User information</h4>
