@@ -42,9 +42,13 @@ const Login = () => {
               className="login-input" 
               ref={password} 
             />
-            <button className="login-button">{ isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Log in' }</button>
+            <button className="login-button" type='submit' disabled={isFetching}>
+              { isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Log in' }
+            </button>
             <span className="login-forgot">Forgot password?</span>
-            <button className="login-register-button">{ isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Create a new account' }</button>
+            <button className="login-register-button">
+              { isFetching ? <CircularProgress style={{ color: 'white' }} /> : 'Create a new account' }
+            </button>
           </form>
         </div>
       </div>
