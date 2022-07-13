@@ -100,3 +100,10 @@
 .rightbar-follow-button:focus {
   outline: none;
 }
+
+.edit-profile-button {
+  color: white;
+  background-color: rgb(41, 41, 250);
+  margin-bottom: 5px;
+  cursor: pointer;
+}

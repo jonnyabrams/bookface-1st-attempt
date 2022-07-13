@@ -7,11 +7,13 @@ import axios from 'axios'
 import { AuthContext } from '../../context/AuthContext'
 import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
+import EditProfileModal from '../editProfileModal/EditProfileModal'
 
 const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([])
   const { user: currentUser, dispatch } = useContext(AuthContext)
   const [followed, setFollowed] = useState(currentUser.following.includes(user?._id))
+  const [modalOpened, setModalOpened] = useState(false)
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
   useEffect(() => {
@@ -71,6 +73,8 @@ const Rightbar = ({ user }) => {
             </button>
         )}
         <h4 className='rightbar-title'>User information</h4>
+        { user.username === currentUser.username && <button className="edit-profile-button" onClick={() => setModalOpened(true)}>Edit profile</button>}
+        <EditProfileModal modalOpened={modalOpened} setModalOpened={setModalOpened} />
         <div className="rightbar-info">
           <div className="rightbar-info-item">
             <span className="rightbar-info-key">City:</span>
