@@ -10,7 +10,7 @@ import RemoveIcon from '@mui/icons-material/Remove'
 
 const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([])
-  const { user: currentUser } = useContext(AuthContext)
+  const { user: currentUser, dispatch } = useContext(AuthContext)
   const [followed, setFollowed] = useState(currentUser.following.includes(user?._id))
   const PF = process.env.REACT_APP_PUBLIC_FOLDER
 
@@ -29,9 +29,11 @@ const Rightbar = ({ user }) => {
   const handleClick = async () => {
     try {
       if (followed) {
-        await axios.put('/user/' + user._id + '/unfollow', {userId: currentUser._id})
+        await axios.put(`/user/${user._id}/unfollow`, {userId: currentUser._id})
+        dispatch({ type: 'UNFOLLOW', payload: user._id })
       } else {
-        await axios.put('/user/' + user._id + '/follow', {userId: currentUser._id})
+        await axios.put(`/user/${user._id}/follow`, {userId: currentUser._id})
+        dispatch({ type: 'UNFOLLOW', payload: user._id })
       }
     } catch (error) {
       console.log(error)

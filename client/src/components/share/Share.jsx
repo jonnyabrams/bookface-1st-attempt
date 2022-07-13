@@ -3,7 +3,7 @@ import PermMediaIcon from '@mui/icons-material/PermMedia'
 import LabelIcon from '@mui/icons-material/Label'
 import RoomIcon from '@mui/icons-material/Room'
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions'
-// import CancelIcon from '@mui/icons-material/Cancel'
+import CancelIcon from '@mui/icons-material/Cancel'
 import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/AuthContext'
 import { useRef } from 'react'
@@ -55,6 +55,12 @@ const Share = () => {
           <input placeholder={`What's on your mind, ${capitalise(user.username)}?`} className='share-input' ref={description} />
         </div>
         <hr className='share-hr' />
+        {/* { file && (
+          <div className="share-image-container">
+            <img src={URL.createObjectURL(file)} className='share-image' alt="" />
+            <CancelIcon className='share-cancel-image' onClick={() => setFile(null)} />
+          </div>
+        )} */}
         <form className="share-bottom" onSubmit={submitHandler}>
           <div className="share-options">
             <label htmlFor='file' className="share-option">
