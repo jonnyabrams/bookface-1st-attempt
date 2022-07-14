@@ -19,19 +19,19 @@ Users can create an account, sign in, post, follow/unfollow other users, like/un
 
 ## Technologies Used
 
-React.js
-Node.js
-Express.js
-MongoDB
-JavaScript
-JSX
-Postman
-Thunder Client
-Dotenv
-Multer
-Axios
-Morgan
-Helmet
+* React.js
+* Node.js
+* Express.js
+* MongoDB
+* JavaScript
+* JSX
+* Postman
+* Thunder Client
+* Dotenv
+* Multer
+* Axios
+* Morgan
+* Helmet
 
 ## Improvements I would like to make
 
