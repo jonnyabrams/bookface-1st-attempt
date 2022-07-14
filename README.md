@@ -4,6 +4,10 @@ This is a Facebook clone built using the MERN stack. It has a React frontend, a 
 
 Users can create an account, sign in, post, follow/unfollow other users, like/unlike each others' posts and - soon, I hope! - send each other private messages.
 
+(Video demo coming soon)
+
+<img width="1440" alt="Screenshot 2022-07-14 at 11 25 42" src="https://user-images.githubusercontent.com/97295867/178962098-4a95f2f4-2228-40a0-9715-28048ca6bc60.png">
+
 ## Instructions for Use
 
 * Clone this repository
