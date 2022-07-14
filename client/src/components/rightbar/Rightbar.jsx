@@ -68,8 +68,8 @@ const Rightbar = ({ user }) => {
       <>
         { user.username !== currentUser.username && (
             <button className="rightbar-follow-button" onClick={handleClick}>
-              { followed ? 'Unfollow' : 'Follow' }
-              { followed ? <RemoveIcon /> : <AddIcon /> }
+              { followed || currentUser.following.includes(user._id) ? 'Unfollow' : 'Follow' }
+              { followed || currentUser.following.includes(user._id) ? <RemoveIcon /> : <AddIcon /> }
             </button>
         )}
         <h4 className='rightbar-title'>User information</h4>
